@@ -1,0 +1,181 @@
+
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* || GENERAL STYLES */
+body {
+  font: 1.5rem "Nunito", sans-serif;
+  min-height: 100vh;
+
+  background-color: white;
+  background-image: radial-gradient(white, white);
+  display: flex;
+  flex-direction: column;
+}
+
+header, nav, main, footer {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100%;
+  text-align: center;
+}
+
+header, footer {
+  position: sticky;
+  /* background-color: #1E293B; */
+  background-color: rebeccapurple;
+  
+  color: whitesmoke;
+}
+
+header {
+  top: 0;
+}
+
+nav {
+  background-color: #fff;
+  color: #000;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer { 
+  bottom: 0;
+}
+
+/* || SMALL */
+@media screen and (min-width: 576px) {
+  body {
+    background-color: white;
+    background-image: radial-gradient(white, white);
+  }
+  nav {
+    display: none;
+  }
+}
+
+/* || MEDIUM */
+@media screen and (min-width: 768px) {
+  body {
+    background-color: white;
+    background-image: radial-gradient(white, white);
+  }
+}
+
+/* || LARGE */
+@media screen and (min-width: 992px) {
+  body {
+    background-color: white;
+    background-image: radial-gradient(white, white);
+  }
+}
+
+/* || XL  */
+@media screen and (min-width: 1200px) {
+  body {
+    background-color: white;
+    background-image: radial-gradient(white, white);
+  }
+}
+
+/* || MOBILE DEVICE LANDSCAPE  */
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  body {
+    background-color: white;
+    background-image: radial-gradient(white, white);
+  }
+
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+
+  nav { display: none }
+}
+
+
+
+/*******************************************************************************/
+/* Button Styles */
+button[name="save"] {
+  font-size: 2rem; /* Larger font */
+  padding: 15px 30px; /* Bigger button padding */
+  background-color: white; /* Tomato color background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  
+}
+
+/* Change background color on hover */
+button[name="save"]:hover {
+  background-color: white; /* Darker tomato color */
+}
+
+/* Button with sad face */
+button[name="save"]::before {
+  content: url("Capture.PNG"); /* Sad face emoji "😞";   <i class="fa-solid fa-face-frown"></i> */  
+  font-size: 2.5rem; /* Larger emoji */
+  margin-right: 10px; /* Space between emoji and text */
+}
+
+/* Optional: Center text and emoji properly */
+button[name="save"]:not(:empty) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+/*  */
+/* Button Styles */
+button[name="report"] {
+  font-size: 2rem; /* Larger font */
+  padding: 15px 30px; /* Bigger button padding */
+  background-color: rgb(132, 68, 197); /* Tomato color background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 28px; /* Rounded corners */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Change background color on hover */
+button[name="report"]:hover {
+  background-color:  rgb(132, 68, 197); /* Darker tomato color */
+}
+
+/* Button with sad face */
+button[name="report"]::before {
+  /* content: "📝";  */  /* Report emoji (memo) */
+  font-size: 2.5rem; /* Larger emoji */
+  margin-right: 10px; /* Space between emoji and text */
+}
+
+/* Optional: Center text and emoji properly */
+button[name="report"]:not(:empty) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
