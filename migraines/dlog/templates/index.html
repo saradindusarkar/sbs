@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Migraine Tracker</title>
+
+    <link rel ="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+
+<body>
+    <header>
+         <h1>Migraine Tracker</h1>
+        {% comment %}         
+        <nav><h2>Naviiii</h2></nav> {% endcomment %}
+    </header>
+
+    <main>
+        {% comment %} <h2>This iss Main</h2> {% endcomment %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }} 
+            <button name="save"> </button>
+        </form>
+
+        <p> &nbsp; </p>
+        <p> &nbsp; </p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button name="report">
+                {% if all_dlogs is not None %} Report {% else %} Report {% endif %}
+            </button>
+        </form>
+
+        <p> &nbsp; </p>
+        <hr>
+        <p> &nbsp; </p>
+
+
+        {% if all_dlogs %}
+            <table border="1">
+                <tr><th>Log Date</th></tr>
+                {% for cursor_dlog in all_dlogs %}
+                    <tr>
+                        <td> {{ cursor_dlog.log_date }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            {% comment %} <p>No data available.</p> {% endcomment %}
+            <p></p>
+        {% endif %}
+
+
+    </main>
+
+    <footer>
+        {% comment %} <h2>Footer heere</h2> {% endcomment %}
+    </footer>
+
+
+
+</body>
+
+
+</html>
