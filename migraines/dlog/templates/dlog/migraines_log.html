@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Migraines Log
+{% endblock %}
+
+{% block content %}
+    <!-- Display any success or error messages -->
+    {% if messages %}
+        <ul id="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to add a new migraines log entry :  Form id="migrainesLogForm" -->
+    <article class="form-column">
+        <h3> Migraine Day &nbsp;&nbsp;&nbsp;&nbsp; </h3>
+        <form id="migrainesLogForm" method="POST">
+            {% csrf_token %}
+            <label for="id_log_date">Date:</label>
+            {{ form.log_date }}  <!-- This will use SelectDateWidget or the HTML date picker widget -->
+        </form>
+    </article>
+
+    <!-- Button outside the form -->
+    <p class="form-button">
+        <button type="button" onclick="submitForm()">Log</button>
+    </p>
+
+
+    <!-- New Report Button  == -->
+    <p class="form-button">
+        <button type="button" onclick="toggleLogs()">Report</button>
+    </p>
+
+
+
+    <script>
+        // JavaScript function to submit the form
+        function submitForm() {
+            document.getElementById("migrainesLogForm").submit();
+        }
+
+        // JavaScript function to toggle the visibility of the logs table
+        function toggleLogs() {
+            const logTable = document.getElementById("logsTable");
+            // Toggle the display property between 'none' and 'table'
+            if (logTable.style.display === "none" || logTable.style.display === "") {
+                logTable.style.display = "table";
+            } else {
+                logTable.style.display = "none";
+            }
+        }
+
+        // JavaScript to hide success messages after a few seconds
+        window.onload = function() {
+            const messageList = document.getElementById("messages");
+            if (messageList) {
+                setTimeout(function() {
+                    // Fade out the message after 3 seconds
+                    messageList.style.transition = "opacity 1s ease-out";
+                    messageList.style.opacity = 0;
+
+                    // After the fade out, hide the message completely
+                    setTimeout(function() {
+                        messageList.style.display = "none";
+                    }, 1000); // Matches the fade-out duration
+                }, 3000); // Message stays for 3 seconds
+            }
+        }
+    </script>
+
+    <!-- Display existing logs -->
+    <table id="logsTable" class="table" style="display: none;">
+        <tr><th>Log Date</th></tr>
+        {% for cursor_migraines_log in all_migraines_log %}
+            <tr><td>{{ cursor_migraines_log.log_date }}</td></tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
